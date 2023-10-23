@@ -15,7 +15,6 @@ namespace Domain.Entities
         [Required(ErrorMessage = "The price is required.")]
         public decimal Price { get; set; }
 
-        [Required(ErrorMessage = "The discount is required.")]
         [Range(0, 100)]
         public int Discount { get; set; }
 
@@ -25,8 +24,6 @@ namespace Domain.Entities
         }
 
         [Required(ErrorMessage = "The Status is required.")]
-        public Guid StatusId { get; set; }
-
-        public virtual Status Status { get; set; }
+        public bool Status { get; set; }
     }
 }
