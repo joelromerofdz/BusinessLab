@@ -25,7 +25,7 @@ namespace Infrastructure.DataAccess.Repositories.Base
             await _context.SaveChangesAsync();
         }
 
-        public async Task<List<T>> GetAll()
+        public async Task<List<T>> GetAllAsync()
         {
             return await _context.Set<T>().ToListAsync();
         }
