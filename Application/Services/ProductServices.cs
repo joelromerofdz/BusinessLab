@@ -3,16 +3,21 @@ using Application.Mappers.Extensions;
 using Application.Services.IProducts;
 using Domain.Entities;
 using Infrastructure.DataAccess.Repositories;
+using Infrastructure.ExternalServices.IExtenalServices;
 
 namespace Application.Services
 {
     public class ProductServices : IProductServices
     {
         private readonly ProductRepository _productRepository;
+        private readonly IDiscountService _discountService;
 
-        public ProductServices(ProductRepository productRepository)
+        public ProductServices(
+            ProductRepository productRepository,
+            IDiscountService discountService)
         {
             _productRepository = productRepository;
+            _discountService = discountService;
         }
 
         public async Task<List<ProductResponse>> GetProducts()
@@ -31,7 +36,9 @@ namespace Application.Services
                 return new ProductResponse();
             }
 
-            var productDto = product.MapToResponse();
+            product.Discount = await _discountService.GetDiscountPercentageAsync(id);
+
+            var productDto = product.MapToResponse(Discount: product.Discount);
 
             return productDto;
         }
@@ -43,9 +50,10 @@ namespace Application.Services
             await _productRepository.AddAsync(product);
         }
 
-        public async Task UpdateProduct(ProductRequest productDTO)
+        public async Task UpdateProduct(Guid id, ProductRequest productDTO)
         {
-            var product = productDTO.MapToEntity();
+            var productFromDb = await _productRepository.GetByIdAsync(id);
+            var product = productDTO.MapToEntity(response: productFromDb);
 
             await _productRepository.UpdateAsync(product);
         }
