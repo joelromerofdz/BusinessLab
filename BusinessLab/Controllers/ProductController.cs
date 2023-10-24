@@ -1,5 +1,4 @@
 ﻿using Application.Dtos;
-using Application.Services;
 using Application.Services.IProducts;
 using Microsoft.AspNetCore.Mvc;
 
@@ -61,7 +60,7 @@ namespace API.Controllers
                 return NotFound("Product does not exist.");
             }
 
-            await _productServices.UpdateProduct(productRequest);
+            await _productServices.UpdateProduct(id, productRequest);
             return Ok();
         }
     }

@@ -144,7 +144,7 @@ namespace API.Test
                 .ReturnsAsync(ProductFixture.ProductResponseMock());
 
             this._productServices
-                .Setup(x => x.UpdateProduct(product));
+                .Setup(x => x.UpdateProduct(id, product));
             #endregion
 
             #region Act
@@ -172,7 +172,7 @@ namespace API.Test
                 .ReturnsAsync(() => null);
 
             this._productServices
-                .Setup(x => x.UpdateProduct(product));
+                .Setup(x => x.UpdateProduct(id, product));
             #endregion
 
             #region Act
@@ -198,7 +198,7 @@ namespace API.Test
                 .ReturnsAsync(() => null);
 
             this._productServices
-                .Setup(x => x.UpdateProduct(product));
+                .Setup(x => x.UpdateProduct(id, product));
             #endregion
 
             #region Act
@@ -227,7 +227,7 @@ namespace API.Test
                 .ReturnsAsync(() => null);
 
             this._productServices
-                .Setup(x => x.UpdateProduct(product));
+                .Setup(x => x.UpdateProduct(id, product));
             #endregion
 
             #region Act

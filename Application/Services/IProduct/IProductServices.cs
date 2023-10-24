@@ -13,6 +13,6 @@ namespace Application.Services.IProducts
         public Task<List<ProductResponse>> GetProducts();
         public Task<ProductResponse?> GetProduct(Guid id);
         public Task AddProduct(ProductRequest productDTO);
-        public Task UpdateProduct(ProductRequest productDTO);
+        public Task UpdateProduct(Guid id, ProductRequest productDTO);
     }
 }
