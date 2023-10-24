@@ -5,6 +5,8 @@ namespace Infrastructure.DataAccess
 {
     public class BusinessLabDbContext : DbContext
     {
+        public BusinessLabDbContext() { }
+
         public BusinessLabDbContext(DbContextOptions options) : base(options)
         {
         }
