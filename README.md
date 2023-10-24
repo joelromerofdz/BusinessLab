@@ -8,11 +8,10 @@ Prerequisites
 &bull; .NET 6 SDK
 &bull; Visual Studio or Visual Studio Code
 
-## Steps Configure the database connection in the appsettings.json file to point to your local database server. 
-
+## Steps. 
 1- Clone the repository to your local machine</br>
 
-2- Update the connection string:</br>
+2- Configure the database connection in the appsettings.json file to point to your local database server. Update the connection string:</br>
 "ConnectionStrings": {
   "DefaultConnection": "YourConnectionString"
 }</br>
